@@ -12,7 +12,7 @@
 #include <QVariant>
 #include <QString>
 
-#include <QWebView>
+#include <QtWebKitWidgets/QWebView>
 #include <QNetworkDiskCache>
 #include <QNetworkCookieJar>
 
@@ -45,30 +45,30 @@ class MpMapXWidget : public QWidget
 {
 Q_OBJECT
 public:
-	explicit MpMapXWidget(MainObject *mob, QWidget *parent = 0);
+    explicit MpMapXWidget(MainObject *mob, QWidget *parent = 0);
 
-	MainObject *mainObject;
+    MainObject *mainObject;
 
-	OpenLayerWidget *mapWidget;
-	PilotsWidget *pilotsWidget;
+    OpenLayerWidget *mapWidget;
+    PilotsWidget *pilotsWidget;
 
-	QSplitter *splitter;
+    QSplitter *splitter;
 
-	void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent *event);
 signals:
 
 public slots:
 
-	void initialize();
+    void initialize();
 
-	void add_airport(QString airport);
-	void add_runway(QString airport, QString rwy1, QString rwy2, QString lat1, QString lng1, QString lat2, QString lng2);
-	void show_airport(QString airport);
+    void add_airport(QString airport);
+    void add_runway(QString airport, QString rwy1, QString rwy2, QString lat1, QString lng1, QString lat2, QString lng2);
+    void show_airport(QString airport);
 
-	void focus_aero(XAero aero);
+    void focus_aero(XAero aero);
 
-	//void on_freeze_map(bool freeze);
-	void on_splitter_moved();
+    //void on_freeze_map(bool freeze);
+    void on_splitter_moved();
 };
 
 #endif // MPMAPXWIDGET_H

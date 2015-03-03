@@ -18,7 +18,7 @@
 
 #include <QCloseEvent>
 
-#include <QWebView>
+#include <QtWebKitWidgets/QWebView>
 #include <QtNetwork/QNetworkDiskCache>
 #include <QtNetwork/QNetworkCookieJar>
 
@@ -30,21 +30,21 @@ class MpMapWidget : public QWidget
 {
 Q_OBJECT
 public:
-	explicit MpMapWidget(MainObject *mOb, QWidget *parent = 0);
+    explicit MpMapWidget(MainObject *mOb, QWidget *parent = 0);
 
-	MainObject *mainObject;
-	QString *mpmapFollowCallsign;
-	
+    MainObject *mainObject;
+    QString *mpmapFollowCallsign;
+
 private:
 
-	QProgressBar *progressBar;
-	QStatusBar *statusBar;
-	QComboBox *comboServer;
-	
+    QProgressBar *progressBar;
+    QStatusBar *statusBar;
+    QComboBox *comboServer;
 
-	QWebView *webView;
-	QNetworkDiskCache *networkDiskCache;
-	QNetworkCookieJar *networkCookieJar;
+
+    QWebView *webView;
+    QNetworkDiskCache *networkDiskCache;
+    QNetworkCookieJar *networkCookieJar;
 
 signals:
 
@@ -53,7 +53,7 @@ public slots:
     void update_progress(int progress);
     void end_progress(bool Ok);
 
-	void on_combo_server();
+    void on_combo_server();
     void closeEvent(QCloseEvent *event);
 };
 
