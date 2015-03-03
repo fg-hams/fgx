@@ -235,10 +235,10 @@ void MainObject::on_launcher(){
 //****************************************************************************
 //** Browser Map
 void MainObject::on_browsermap(){
-    QUrl mapUrl(X->getx("show_mpmap"));
+    QUrlQuery mapUrl(X->getx("show_mpmap"));
     if (X->get_ena("show_mpmap")) {
         mapUrl.addQueryItem("follow", X->getx("--callsign="));
-        QDesktopServices::openUrl(mapUrl);
+        QDesktopServices::openUrl(mapUrl.toString());
         outLog("Opening browser map: "+mapUrl.toString());
     }
 }
@@ -412,7 +412,7 @@ QString MainObject::log_file_path(){
  * \return Absolute path
  */
 QString MainObject::temp_dir(){
-    return QDir(QDesktopServices::storageLocation(QDesktopServices::TempLocation)).absolutePath();
+    return QDir(QStandardPaths::writableLocation(QStandardPaths::TempLocation)).absolutePath();
 }
 /** \brief location if temp directoty , os specific with appended file/path
  *
@@ -436,7 +436,7 @@ QString MainObject::temp_dir(QString append_path){
  * \return Absolute path to the file
  */
 QString MainObject::data_file(QString file_name){
-    QString storedir = QDir(QDesktopServices::storageLocation(QDesktopServices::DataLocation)).absolutePath();
+    QString storedir = QDir(QStandardPaths::writableLocation(QStandardPaths::DataLocation)).absolutePath();
 
     // create path is not exist
     if(!QFile::exists(storedir)){

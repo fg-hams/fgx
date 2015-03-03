@@ -39,12 +39,15 @@ include_directories ( ${Qt5XmlPatterns_INCLUDE_DIRS} )
 include_directories ( ${Qt5WebKit_INCLUDE_DIRS} )
 include_directories ( ${Qt5WebKitWidgets_INCLUDE_DIRS} )
 
+add_definitions(${Qt5Core_DEFINITIONS})
+add_definitions(${Qt5Gui_DEFINITIONS})
 add_definitions(${Qt5Widgets_DEFINITIONS})
 add_definitions(${Qt5Xml_DEFINITIONS})
 add_definitions( ${QT_DEFINITIONS} )
 
 # Executables fail to build with Qt 5 in the default configuration
 # without -fPIE. We add that here.
+# pete notes.. this means not using <qtFoo/QBar
 set(CMAKE_CXX_FLAGS "${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 
 # debug messages
@@ -57,7 +60,7 @@ set( QT_USE_QTXML TRUE )
 set( QT_USE_QTXMLPATTERNS TRUE )
 set( QT_USE_QTWEBKIT TRUE )
 
-set(CMAKE_AUTOMOC ON)
+#set(CMAKE_AUTOMOC ON)
 
 
 set( fgx_SRCS
